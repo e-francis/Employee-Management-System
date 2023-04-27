@@ -6,22 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EmployerLoginGUI {
-    private JFrame frame;
-    private JLabel lblUsername;
-    private JLabel lblPassword;
-    private JTextField txtUsername;
-    private JPasswordField txtPassword;
-    private JButton btnLogin;
-    private JButton btnCancel;
+    private final JFrame frame;
+    private final JTextField txtUsername;
+    private final JPasswordField txtPassword;
 
     public EmployerLoginGUI() {
         frame = new JFrame("Employer Login");
-        lblUsername = new JLabel("Username:");
-        lblPassword = new JLabel("Password:");
+        JLabel lblUsername = new JLabel("Username:");
+        JLabel lblPassword = new JLabel("Password:");
         txtUsername = new JTextField();
         txtPassword = new JPasswordField();
-        btnLogin = new JButton("Login");
-        btnCancel = new JButton("Cancel");
+        JButton btnLogin = new JButton("Login");
+        JButton btnCancel = new JButton("Cancel");
 
         // Set layout manager
         frame.setLayout(new GridLayout(3, 2));

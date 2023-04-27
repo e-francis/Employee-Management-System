@@ -9,15 +9,15 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class EmployeeManagementGUI {
-    private JFrame frame;
-    private JTextField ageField;
-    private JTextField sexField;
-    private JTextField workTypeField;
-    private JTextField degreeField;
-    private JTextField enjoyField;
-    private JTextField workDurationField;
-    private JTextField contributionField;
-    private JTextField mistakesField;
+    private final JFrame frame;
+    private final JTextField ageField;
+    private final JTextField sexField;
+    private final JTextField workTypeField;
+    private final JTextField degreeField;
+    private final JTextField enjoyField;
+    private final JTextField workDurationField;
+    private final JTextField contributionField;
+    private final JTextField mistakesField;
 
     private void login() {
         String username = JOptionPane.showInputDialog(frame, "Enter username:", "Login", JOptionPane.PLAIN_MESSAGE);
@@ -36,11 +36,7 @@ public class EmployeeManagementGUI {
     private boolean authenticate(String username, String password) {
         // Replace this with your own authentication logic
         // For example, you can compare the username and password with a pre-defined list of valid credentials
-        if ("employee".equals(username) && "password123".equals(password)) {
-            return true;
-        } else {
-            return false;
-        }
+        return "employee".equals(username) && "password123".equals(password);
     }
 
     public EmployeeManagementGUI() {

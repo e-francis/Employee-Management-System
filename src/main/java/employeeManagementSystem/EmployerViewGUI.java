@@ -10,15 +10,14 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class EmployerViewGUI {
-    private JFrame frame;
-    private JTextArea txtEmployeeData;
+    private final JTextArea txtEmployeeData;
 
     public EmployerViewGUI() {
-        frame = new JFrame("Employee Data");
+        JFrame frame = new JFrame("Employee Data");
         txtEmployeeData = new JTextArea(10, 30);
         txtEmployeeData.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(txtEmployeeData);
-        JButton btnRefresh = new JButton("Refresh");
+        JButton btnRefresh = new JButton("Refresh Data");
 
         // Set layout manager
         frame.setLayout(new BorderLayout());
@@ -45,7 +44,7 @@ public class EmployerViewGUI {
     }
 
     private String getEmployeeData() {
-        String data = "Employee Data:\n";
+        StringBuilder data = new StringBuilder("Employee Data:\n");
         try {
             FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/EmployeeData.xlsx");
             Workbook workbook = new XSSFWorkbook(file);
@@ -63,15 +62,15 @@ public class EmployerViewGUI {
                 String mistakes = row.getCell(7).toString();
 
                 // Append employee data to the string
-                data += "Age: " + age + "\n";
-                data += "Sex: " + sex + "\n";
-                data += "Type of Work: " + workType + "\n";
-                data += "Degree of Learning: " + degree + "\n";
-                data += "Enjoy Assigned Roles: " + enjoyWork + "\n";
-                data += "Work Duration: " + workDuration + "\n";
-                data += "Contributions: " + contributions + "\n";
-                data += "Mistakes: " + mistakes + "\n";
-                data += "\n";
+                data.append("Age: ").append(age).append("\n");
+                data.append("Sex: ").append(sex).append("\n");
+                data.append("Type of Work: ").append(workType).append("\n");
+                data.append("Degree of Learning: ").append(degree).append("\n");
+                data.append("Enjoy Assigned Roles: ").append(enjoyWork).append("\n");
+                data.append("Work Duration: ").append(workDuration).append("\n");
+                data.append("Contributions: ").append(contributions).append("\n");
+                data.append("Mistakes: ").append(mistakes).append("\n");
+                data.append("\n");
             }
 
             workbook.close();
@@ -80,7 +79,7 @@ public class EmployerViewGUI {
             ex.printStackTrace();
         }
 
-        return data;
+        return data.toString();
     }
 
     public static void main(String[] args) {

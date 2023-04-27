@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Employee Management System" />
+        <module name="Employee_Management_System" />
       </profile>
     </annotationProcessing>
   </component>

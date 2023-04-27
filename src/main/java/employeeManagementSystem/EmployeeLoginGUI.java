@@ -6,22 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EmployeeLoginGUI {
-    private JFrame frame;
-    private JLabel lblUsername;
-    private JLabel lblPassword;
-    private JTextField txtUsername;
-    private JPasswordField txtPassword;
-    private JButton btnLogin;
-    private JButton btnCancel;
+    private final JFrame frame;
+    private final JTextField txtUsername;
+    private final JPasswordField txtPassword;
 
     public EmployeeLoginGUI() {
         frame = new JFrame("Employee Login");
-        lblUsername = new JLabel("Username:");
-        lblPassword = new JLabel("Password:");
+        JLabel lblUsername = new JLabel("Username:");
+        JLabel lblPassword = new JLabel("Password:");
         txtUsername = new JTextField();
         txtPassword = new JPasswordField();
-        btnLogin = new JButton("Login");
-        btnCancel = new JButton("Cancel");
+        JButton btnLogin = new JButton("Login");
+        JButton btnCancel = new JButton("Cancel");
 
         // Set layout manager
         frame.setLayout(new GridLayout(3, 2));
@@ -35,31 +31,23 @@ public class EmployeeLoginGUI {
         frame.add(btnCancel);
 
         // Add action listeners
-        btnLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = txtUsername.getText();
-                String password = new String(txtPassword.getPassword());
+        btnLogin.addActionListener(e -> {
+            String username = txtUsername.getText();
+            String password = new String(txtPassword.getPassword());
 
-                // Call the login() method to check for login success
-                boolean loginSuccess = login(username, password);
+            // Call the login() method to check for login success
+            boolean loginSuccess = login(username, password);
 
-                if (loginSuccess) {
-                    // Display login success message
-                    JOptionPane.showMessageDialog(frame, "Login Successful!");
-                } else {
-                    // Display login failure message
-                    JOptionPane.showMessageDialog(frame, "Invalid username or password. Please try again.");
-                }
+            if (loginSuccess) {
+                // Display login success message
+                JOptionPane.showMessageDialog(frame, "Login Successful!");
+            } else {
+                // Display login failure message
+                JOptionPane.showMessageDialog(frame, "Invalid username or password. Please try again.");
             }
         });
 
-        btnCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        btnCancel.addActionListener(e -> System.exit(0));
 
         // Set frame properties
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,11 +59,7 @@ public class EmployeeLoginGUI {
     // Login authentication logic
     // compares username and password with hardcoded values
     protected boolean login(String username, String password) {
-        if (username.equals("employee") && password.equals("password123")) {
-            return true;
-        } else {
-            return false;
-        }
+        return username.equals("employee") && password.equals("password123");
     }
 
     public static void main(String[] args) {
